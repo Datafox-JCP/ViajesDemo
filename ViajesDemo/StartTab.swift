@@ -9,13 +9,21 @@ import SwiftUI
 
 struct StartTab: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        TabView {
+            Tab("Map", systemImage: "map") {
+                MapTripView()
+                    .toolbarBackground(.appBlue.opacity(0.8), for: .tabBar)
+                    .toolbarBackgroundVisibility(.visible, for: .tabBar)
+                    .toolbarColorScheme(.dark, for: .tabBar)
+            } // Map tab
+            
+            Tab("Destinations", systemImage: "globe.desk") {
+                DestinationLocationsMapView()
+                    .toolbarBackground(.appBlue.opacity(0.8), for: .tabBar)
+                    .toolbarBackgroundVisibility(.visible, for: .tabBar)
+                    .toolbarColorScheme(.dark, for: .tabBar)
+            } // Destinations tab
+        } // Tab
     }
 }
 
